@@ -58,14 +58,15 @@ fun MapScreen(
         LocationUtils.getPosition(currentLocation), 12f)
 
     var requestLocationUpdate by remember { mutableStateOf(true)}
-
-    MyGoogleMap(
-        currentLocation,
-        cameraPositionState,
-        onGpsIconClick = {
-            requestLocationUpdate = true
-        }
-    )
+    Box(Modifier.fillMaxSize(), Alignment.Center) {
+        MyGoogleMap(
+            currentLocation,
+            cameraPositionState,
+            onGpsIconClick = {
+                requestLocationUpdate = true
+            }
+        )
+    }
 
     if(requestLocationUpdate) {
         LocationPermissionsAndSettingDialogs(
