@@ -28,6 +28,6 @@ import dagger.hilt.components.SingletonComponent
 object DaosModule {
     @Provides
     fun providesTopicsDao(
-        database: QueDatabase,
+        database: VeoDatabase,
     ): TopicDao = database.topicDao()
 }

@@ -1,8 +1,19 @@
 package com.veo.mobikemap.utils
 
 
+import android.R
+import android.graphics.Color
+import androidx.annotation.IdRes
+import com.github.bkhezry.extramaputils.builder.ExtraMarkerBuilder
+import com.github.bkhezry.extramaputils.builder.ExtraPolygonBuilder
+import com.github.bkhezry.extramaputils.builder.ExtraPolylineBuilder
+import com.github.bkhezry.extramaputils.model.ExtraMarker
+import com.github.bkhezry.extramaputils.model.ExtraPolygon
+import com.github.bkhezry.extramaputils.model.ExtraPolyline
+import com.github.bkhezry.extramaputils.model.UiOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+
 
 fun List<LatLng>.getCenterOfPolygon(): LatLngBounds {
     val centerBuilder: LatLngBounds.Builder = LatLngBounds.builder()

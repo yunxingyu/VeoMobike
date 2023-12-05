@@ -34,6 +34,7 @@ import com.veo.mobikemap.navigation.forMapDetailScreen
 import com.veo.mobikemap.navigation.forMapScreenRoute
 import com.veo.mobikemap.navigation.mapScreenRoute
 import com.veo.mobike.R
+import com.veo.mobike.ui.BackPressHandler
 import com.veo.usercenter.navigation.forMineScreen
 
 
@@ -59,6 +60,13 @@ fun MobikeApp(
     }
     val snackbarHostState = remember { SnackbarHostState() }
 
+    var isInSelectionMode by remember {
+        mutableStateOf(false)
+    }
+    val resetSelectionMode = {
+        isInSelectionMode = false
+    }
+
     Scaffold(
         bottomBar = {
             AnimatedVisibility(
@@ -82,9 +90,11 @@ fun MobikeApp(
         ) {
             forMapScreenRoute()
             forMapDetailScreen()
-            forMineScreen()
+            forMineScreen(appState.navController)
         }
     }
+
+    BackPressHandler(isInSelectionMode, resetSelectionMode)
 }
 
 @Composable

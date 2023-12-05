@@ -2,6 +2,7 @@ package com.veo.usercenter.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.veo.usercenter.ui.MineRoute
@@ -13,10 +14,10 @@ fun NavController.navigateToUserCenter(navOptions: NavOptions? = null) {
 }
 
 
-fun NavGraphBuilder.forMineScreen() {
+fun NavGraphBuilder.forMineScreen(navController: NavHostController) {
     composable(
         route = userNavigationRoute,
     ) {
-        MineRoute()
+        MineRoute(navController)
     }
 }

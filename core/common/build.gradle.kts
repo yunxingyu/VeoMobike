@@ -55,6 +55,9 @@ dependencies {
 
     implementation(libs.kotlinx.datetime)
 
+    // DataStore
+    implementation(libs.androidx.datastore.preferences)
+
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp.logging)
     implementation(libs.retrofit.moshi)
@@ -69,4 +72,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

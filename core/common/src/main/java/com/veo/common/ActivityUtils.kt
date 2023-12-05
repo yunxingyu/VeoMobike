@@ -14,6 +14,8 @@ object ActivityUtils {
             }
             context = context.baseContext
         }
-        return null
+        return activity
     }
+
+    var activity :Activity? = null
 }

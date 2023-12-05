@@ -60,6 +60,7 @@ dependencies {
     implementation(libs.maps.ktx.utils)
     implementation(libs.maps.ktx.std)
     implementation(libs.accompanist.permissions)
+    implementation(libs.extra.map.utils)
 
     implementation(libs.play.services.location)
 
