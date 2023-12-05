@@ -38,6 +38,6 @@ import com.veo.common.database.util.InstantConverter
 @TypeConverters(
     InstantConverter::class,
 )
-abstract class QueDatabase : RoomDatabase() {
+abstract class VeoDatabase : RoomDatabase() {
     abstract fun topicDao(): TopicDao
 }

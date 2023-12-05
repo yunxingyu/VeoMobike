@@ -18,7 +18,7 @@ package com.google.samples.apps.nowinandroid.core.database
 
 import android.content.Context
 import androidx.room.Room
-import com.veo.common.database.QueDatabase
+import com.veo.common.database.VeoDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,9 +33,9 @@ object DatabaseModule {
     @Singleton
     fun providesNiaDatabase(
         @ApplicationContext context: Context,
-    ): QueDatabase = Room.databaseBuilder(
+    ): VeoDatabase = Room.databaseBuilder(
         context,
-        QueDatabase::class.java,
+        VeoDatabase::class.java,
         "nia-database",
     ).build()
 }
