@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,22 +31,19 @@ internal fun MapScreenRoute(
     modifier: Modifier = Modifier,
     viewModel: MobikeViewModel = hiltViewModel(),
 ) {
-//    val onboardingUiState by viewModel.onboardingUiState.collectAsStateWithLifecycle()
-//    val feedState by viewModel.feedState.collectAsStateWithLifecycle()
-//    val isSyncing by viewModel.isSyncing.collectAsStateWithLifecycle()
-//    val deepLinkedUserNewsResource by viewModel.deepLinkedNewsResource.collectAsStateWithLifecycle()
     val activity = LocalContext.current as? Activity
-   val  fusedLocationProviderClient = activity?.let {
-       LocationServices.getFusedLocationProviderClient(
-           it
-       )
-   }
+    val fusedLocationProviderClient = activity?.let {
+        LocationServices.getFusedLocationProviderClient(
+            it
+        )
+    }
 
     MapScreen(
         fusedLocationProviderClient,
         modifier
     )
 }
+
 @SuppressLint("MissingPermission")
 @Composable
 fun MapScreen(
@@ -56,20 +55,30 @@ fun MapScreen(
 
     val cameraPositionState = rememberCameraPositionState()
     cameraPositionState.position = CameraPosition.fromLatLngZoom(
-        LocationUtils.getPosition(currentLocation), 12f)
+        LocationUtils.getPosition(currentLocation), 12f
+    )
 
-    var requestLocationUpdate by remember { mutableStateOf(true)}
-    Box(Modifier.fillMaxSize(), Alignment.Center) {
-        MyGoogleMap(
-            currentLocation,
-            cameraPositionState,
-            onGpsIconClick = {
-                requestLocationUpdate = true
-            }
-        )
+    var requestLocationUpdate by remember { mutableStateOf(true) }
+    Scaffold {
+        Surface(
+            modifier = modifier.padding(it)
+        ) {
+            Column(modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                content = {
+                    MyGoogleMap(
+                        currentLocation,
+                        cameraPositionState,
+                        onGpsIconClick = {
+                            requestLocationUpdate = true
+                        }
+                    )
+                })
+        }
     }
 
-    if(requestLocationUpdate) {
+    if (requestLocationUpdate) {
         LocationPermissionsAndSettingDialogs(
             updateCurrentLocation = {
                 requestLocationUpdate = false
@@ -91,7 +100,8 @@ fun MapScreen(
 private fun MyGoogleMap(
     currentLocation: Location,
     cameraPositionState: CameraPositionState,
-    onGpsIconClick: () -> Unit) {
+    onGpsIconClick: () -> Unit
+) {
 
     val mapUiSettings by remember {
         mutableStateOf(
@@ -151,11 +161,13 @@ private fun DebugOverlay(
         Text(
             text = "Camera is $moving",
             fontWeight = FontWeight.Bold,
-            color = Color.DarkGray)
+            color = Color.DarkGray
+        )
         Text(
             text = "Camera position is ${cameraPositionState.position}",
             fontWeight = FontWeight.Bold,
-            color = Color.DarkGray)
+            color = Color.DarkGray
+        )
     }
 }
 

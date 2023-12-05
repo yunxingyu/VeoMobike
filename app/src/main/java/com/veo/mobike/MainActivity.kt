@@ -7,14 +7,22 @@ import androidx.activity.viewModels
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.IndicationInstance
+import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
@@ -27,15 +35,19 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.veo.common.data.util.NetworkMonitor
 import com.veo.mobike.navigation.MobikeApp
 import com.veo.mobike.theme.QuestionBankTheme
 import com.veo.mobike.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @AndroidEntryPoint
@@ -52,6 +64,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             var showSplash by rememberSaveable { mutableStateOf(true) }
             LaunchedEffect(Unit) {
+                delay(1000)
                 showSplash = false
             }
             QuestionBankTheme {
@@ -81,12 +94,29 @@ private fun Splash() {
             lightColorScheme()
         },
     ) {
-        // 设置全局参数，去除默认点击效果
-        Box(Modifier.fillMaxSize(), Alignment.Center) {
-            Image(
-                painter = painterResource(id = R.drawable.app_logo),
-                contentDescription = stringResource(id = R.string.app_name),
-            )
+        Scaffold {
+            Surface(
+                modifier = Modifier.padding(it)
+            ) {
+
+                Column(
+                    verticalArrangement = Arrangement.Bottom,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.app_logo),
+                        contentDescription = null,
+                    )
+                    Text(
+                        modifier = Modifier.padding(start = 15.dp, end = 15.dp, bottom = 80.dp, top = 30.dp),
+                        text = stringResource(R.string.app_Launcher_word),
+                        fontSize = 20.sp,
+                    )
+                }
+
+            }
         }
     }
 }

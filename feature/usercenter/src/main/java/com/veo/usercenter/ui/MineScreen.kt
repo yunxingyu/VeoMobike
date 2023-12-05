@@ -50,20 +50,20 @@ internal fun MineScreen(
 
     Scaffold {
         Surface(
-            modifier = Modifier.padding(it)
+            modifier = modifier.padding(it)
         ) {
             LazyColumn(
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxWidth()
                     .padding(14.dp)
             ) {
                 item {
                     Text(
-                        modifier = Modifier.padding(start = 5.dp),
+                        modifier = modifier.padding(start = 5.dp),
                         text = stringResource(R.string.user_center),
                         fontSize = 14.sp,
                     )
-                    Spacer(modifier = Modifier.height(6.dp))
+                    Spacer(modifier = modifier.height(6.dp))
                     SettingsSwitchCard(
                         text = stringResource(id = R.string.user_dark_mode),
                         icon = painterResource(id = R.drawable.user_moon_icon),
@@ -72,7 +72,7 @@ internal fun MineScreen(
                             themeViewModel.toggleTheme()
                         }
                     )
-                    Spacer(modifier = Modifier.height(6.dp))
+                    Spacer(modifier = modifier.height(6.dp))
                 }
             }
         }
