@@ -81,7 +81,7 @@ maps-compose-widgets = { group= "com.google.maps.android",name="maps-compose-wid
 maps-ktx-std = { module = "com.google.maps.android:maps-ktx", version.ref = "mapsktx" }
 play-services-location = { module ="com.google.android.gms:play-services-location" , version ="20.0.0"}
 maps-ktx-utils = { module = "com.google.maps.android:maps-utils-ktx", version.ref = "mapsktx" }
-
+extra-map-utils = { module = "com.github.bkhezry:ExtraMapUtils" , version ="1.2.2"}
 
 work-testing = { group = "androidx.work", name = "work-testing", version = "2.8.1" }
 

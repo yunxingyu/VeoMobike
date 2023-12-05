@@ -42,6 +42,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.veo.common.ActivityUtils
 import com.veo.common.data.util.NetworkMonitor
 import com.veo.mobike.navigation.MobikeApp
 import com.veo.mobike.theme.QuestionBankTheme
@@ -60,7 +61,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        ActivityUtils.activity = this
         setContent {
             var showSplash by rememberSaveable { mutableStateOf(true) }
             LaunchedEffect(Unit) {
