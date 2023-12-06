@@ -134,7 +134,7 @@ private fun GpsIconButton(onIconClick: () -> Unit) {
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.End
+            horizontalArrangement = Arrangement.Center
         ) {
 
             IconButton(onClick = onIconClick) {
